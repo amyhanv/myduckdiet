@@ -1,17 +1,22 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from "vue";
+import BootstrapVue from "bootstrap-vue";
 import VueRouter from "vue-router";
 import VueFire from "vuefire";
+
 import App from "./App";
 import Log from "./components/Log";
 import Result from "./components/Result";
 import Datetime from "vue-datetime";
 import "vue-datetime/dist/vue-datetime.css";
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-vue/dist/bootstrap-vue.css";
 
 Vue.use(VueFire);
 Vue.use(VueRouter);
 Vue.use(Datetime);
+Vue.use(BootstrapVue);
 
 Vue.config.productionTip = false;
 
@@ -37,9 +42,11 @@ const router = new VueRouter({
 
 new Vue({
   router,
+  // BootstrapVue,
   // el: "#app",
   components: {
     // datetime: Datetime
+    // BootstrapVue
   },
   template: `
     <div id="app">

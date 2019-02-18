@@ -10,9 +10,12 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "babel-runtime": "^6.26.0",
+    "bootstrap": "^4.3.1",
+    "bootstrap-vue": "^2.0.0-rc.12",
     "firebase": "^5.8.3",
     "luxon": "^1.11.3",
-    "vue": "^2.5.2",
+    "vue": "^2.6.6",
     "vue-datetime": "^1.0.0-beta.10",
     "vue-router": "^3.0.2",
     "vue-time-picker": "^0.2.6",
@@ -22,6 +25,7 @@
   "devDependencies": {
     "autoprefixer": "^7.1.2",
     "babel-core": "^6.22.1",
+    "@babel/runtime": "^7.3.1",
     "babel-helper-vue-jsx-merge-props": "^2.0.3",
     "babel-loader": "^7.1.1",
     "babel-plugin-syntax-jsx": "^6.18.0",

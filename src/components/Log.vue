@@ -34,6 +34,15 @@
           <i>What food</i> were the ducks fed?
         </label>
         <input v-model="newFood" class="input-form" type="text">
+        <b-form-group label="Individual radios">
+          <b-form-radio value="A" v-model="selected" name="some-radios">Option A</b-form-radio>
+          <b-form-radio value="B" v-model="selected" name="some-radios">Option B</b-form-radio>
+        </b-form-group>
+
+        <div class="mt-3">
+          Selected:
+          <strong>{{ selected }}</strong>
+        </div>
       </div>
 
       <!-- Question #2 -->
@@ -135,7 +144,7 @@ export default {
       newNumDucks: "",
       newTimeFed: "",
       newWhereFed: "",
-      datetime: ""
+      selected: ""
     };
   },
   methods: {
