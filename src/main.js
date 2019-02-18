@@ -6,9 +6,12 @@ import VueFire from "vuefire";
 import App from "./App";
 import Log from "./components/Log";
 import Result from "./components/Result";
+import Datetime from "vue-datetime";
+import "vue-datetime/dist/vue-datetime.css";
 
 Vue.use(VueFire);
 Vue.use(VueRouter);
+Vue.use(Datetime);
 
 Vue.config.productionTip = false;
 
@@ -35,7 +38,9 @@ const router = new VueRouter({
 new Vue({
   router,
   // el: "#app",
-  // components: { App },
+  components: {
+    // datetime: Datetime
+  },
   template: `
     <div id="app">
       <ul id="nav">

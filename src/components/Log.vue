@@ -22,26 +22,11 @@
         </form>
       </div>
     </div>-->
-    <!-- <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Author</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="book in books">
-          <td>
-            <a v-bind:href="book.url">{{book.title}}</a>
-          </td>
-          <td>{{book.author}}</td>
-        </tr>
-      </tbody>
-    </table>-->
-    <header id="app-header">
+    <header id="app-header" class="text-left">
       <h1>Duck Diet</h1>
       <!-- <p>What are the ducks eating?</p> -->
     </header>
+
     <form v-on:submit.prevent="addLog" id="add-log">
       <!-- Question #1 -->
       <div class="form-question">
@@ -56,7 +41,8 @@
         <label for="food">
           <i>What time</i> were the ducks fed?
         </label>
-        <input v-model="newTimeFed" class="input-form" type="text">
+        <datetime type="datetime" v-model="newTimeFed"></datetime>
+        <!-- <input v-model="newTimeFed" class="input-form" type="text"> -->
       </div>
 
       <!-- Question #3 -->
@@ -93,6 +79,10 @@
 
       <input id="submit-log" type="submit" value="Submit">
     </form>
+
+    <p v-for="item in timeFed">
+      <a>{{item[".value"]}}</a>
+    </p>
   </div>
 </template>
 
@@ -119,18 +109,23 @@ let db = app.database();
 
 // Retrieve a reference to nodes of each input field/questions
 let booksRef = db.ref("books");
-let food = db.ref("food");
-let foodAmount = db.ref("food-amount");
-let foodKind = db.ref("food-kind");
-let numDucks = db.ref("num-duck");
-let timeFed = db.ref("time-fed");
-let whereFed = db.ref("where");
+let foodRef = db.ref("food");
+let foodAmountRef = db.ref("food-amount");
+let foodKindRef = db.ref("food-kind");
+let numDucksRef = db.ref("num-duck");
+let timeFedRef = db.ref("time-fed");
+let whereFedRef = db.ref("where");
 
 export default {
   name: "Log",
   firebase: {
     // books variable gives us access to the books items from the Firebase database
-    // books: booksRef
+    food: foodRef,
+    foodAmount: foodAmountRef,
+    foodKind: foodKindRef,
+    numDucks: numDucksRef,
+    timeFed: timeFedRef,
+    whereFed: whereFedRef
   },
   data() {
     return {
@@ -139,17 +134,18 @@ export default {
       newFoodKind: "",
       newNumDucks: "",
       newTimeFed: "",
-      newWhereFed: ""
+      newWhereFed: "",
+      datetime: ""
     };
   },
   methods: {
     addLog: function() {
-      food.push(this.newFood);
-      foodAmount.push(this.newFoodAmt);
-      foodKind.push(this.newFoodKind);
-      numDucks.push(this.newNumDucks);
-      timeFed.push(this.newTimeFed);
-      whereFed.push(this.newWhereFed);
+      foodRef.push(this.newFood);
+      foodAmountRef.push(this.newFoodAmt);
+      foodKindRef.push(this.newFoodKind);
+      numDucksRef.push(this.newNumDucks);
+      timeFedRef.push(this.newTimeFed);
+      whereFedRef.push(this.newWhereFed);
     }
   },
   components: {}
@@ -157,7 +153,6 @@ export default {
 </script>
 
 <style>
-#log,
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

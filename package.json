@@ -11,9 +11,13 @@
   },
   "dependencies": {
     "firebase": "^5.8.3",
+    "luxon": "^1.11.3",
     "vue": "^2.5.2",
+    "vue-datetime": "^1.0.0-beta.10",
     "vue-router": "^3.0.2",
-    "vuefire": "^1.4.5"
+    "vue-time-picker": "^0.2.6",
+    "vuefire": "^1.4.5",
+    "weekstart": "^1.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
