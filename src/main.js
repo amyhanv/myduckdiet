@@ -13,6 +13,7 @@ import "vue-datetime/dist/vue-datetime.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 
+Vue.use(Vuelidate);
 Vue.use(VueFire);
 Vue.use(VueRouter);
 Vue.use(Datetime);
