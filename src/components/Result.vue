@@ -2,21 +2,38 @@
   <div id="result" class="container">
     <h1>RESULT PAGE</h1>
 
-    <div class="form-question">
-      <form v-on:submit.prevent="addLog" id="add-log">
-        <label>
-          <i>What food</i> were the ducks fed?
-        </label>
-        <input v-model="newFood" class="input-form" type="text">
-        <input id="submit-log" type="submit" value="Submit">
-      </form>
-    </div>
+    <p v-for="item in timeFed">
+      <a>{{item[".value"]}}</a>
+    </p>
   </div>
 </template>
 
 <script>
+var fb = require("../fire.js");
+
 export default {
-  name: "Result"
+  name: "Result",
+  firebase: {
+    // Variable gives us access to the books items from the Firebase database
+    food: fb.foodRef,
+    foodAmount: fb.foodAmountRef,
+    foodKind: fb.foodKindRef,
+    numDucks: fb.numDucksRef,
+    timeFed: fb.timeFedRef,
+    whereFed: fb.whereFedRef
+  },
+  data() {
+    return {
+      // Variables from form
+    };
+  },
+  methods: {
+    // on Submit -> addLog
+    addLog: function() {
+      return;
+    }
+  },
+  components: {}
 };
 </script>
 
