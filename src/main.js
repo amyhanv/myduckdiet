@@ -29,25 +29,12 @@ const router = new VueRouter({
   ]
 });
 
-/* eslint-disable no-new */
-// new Vue({
-//   el: "#app",
-//   components: { App },
-//   template: "<App/>"
-// });
-
 /* Instance: Each Vue instance goes through a series of initialization steps when it’s created 
 - for example, it needs to set up data observation, compile the template, mount the instance to the DOM, and update the DOM when data changes. 
 */
 
 new Vue({
   router,
-  // BootstrapVue,
-  // el: "#app",
-  components: {
-    // datetime: Datetime
-    // BootstrapVue
-  },
   template: `
     <div id="app">
       <ul id="nav">
@@ -61,7 +48,6 @@ new Vue({
 
 /* 
 Mounting hooks are often the most-used hooks, for better or worse. They allow you to access your component immediately before and after the first render. They do not, however, run during server-side rendering.
-
 Use if: You need to access or modify the DOM of your component immediately before or after the initial render.
 
 

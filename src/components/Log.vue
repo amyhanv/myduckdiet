@@ -14,6 +14,14 @@
     <b-form v-on:submit.stop.prevent="addLog" id="add-log">
       <!-- Question #1 -->
       <div class="form-question">
+        <h4 for="food">
+          <i>What time</i> were the ducks fed?
+        </h4>
+        <datetime type="datetime" placeholder="Pick time" v-model="newTimeFed"></datetime>
+      </div>
+
+      <!-- Question #2 -->
+      <div class="form-question">
         <h4>
           <i>What food</i> were the ducks fed?
         </h4>
@@ -33,14 +41,6 @@
           <h6 v-if="newFood">Selected:</h6>
           <strong>{{ newFood }}</strong>
         </div>
-      </div>
-
-      <!-- Question #2 -->
-      <div class="form-question">
-        <h4 for="food">
-          <i>What time</i> were the ducks fed?
-        </h4>
-        <datetime type="datetime" placeholder="Pick time" v-model="newTimeFed"></datetime>
       </div>
 
       <!-- Question #3 -->
