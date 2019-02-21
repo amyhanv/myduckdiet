@@ -1,7 +1,7 @@
 import Firebase from "firebase";
 
 var config = {
-  apiKey: "AIzaSyBf1cp1N-NmTD0fbLBpeFvab2bTjRZwPxw",
+  apiKey: process.env.VUE_APP_FIREBASE_API_KEY,
   authDomain: "myduckdiet.firebaseapp.com",
   databaseURL: "https://myduckdiet.firebaseio.com",
   projectId: "myduckdiet",

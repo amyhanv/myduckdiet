@@ -17,8 +17,6 @@
         <h4>
           <i>What food</i> were the ducks fed?
         </h4>
-
-        <!-- <input v-model="newFood" class="input-form" type="text"> -->
         <b-form-group id="radio-form">
           <b-form-radio value="Small fish" v-model="newFood">Small fish</b-form-radio>
           <b-form-radio value="Seed or grain" v-model="newFood">Seed or grain</b-form-radio>
@@ -43,7 +41,6 @@
           <i>What time</i> were the ducks fed?
         </h4>
         <datetime type="datetime" placeholder="Pick time" v-model="newTimeFed"></datetime>
-        <!-- <input v-model="newTimeFed" class="input-form" type="text"> -->
       </div>
 
       <!-- Question #3 -->
@@ -51,7 +48,6 @@
         <h4 for="food">
           <i>How many grams of food</i> were the ducks fed?
         </h4>
-        <!-- <input v-model="newFoodAmt" class="input-form" type="text"> -->
         <b-form-input
           type="range"
           id="range-1"
@@ -120,9 +116,7 @@
 </template>
 
 <script>
-// Reference fire.js config file
-// import fire from "./fire";
-
+// Reference fire.js config file for FirebaseDB
 var fb = require("../fire.js");
 
 export default {
@@ -139,8 +133,9 @@ export default {
     };
   },
   methods: {
-    /* addLog checks to see if all fields are inputed
-    and pushes the data to firebase DB
+    /* addLog()
+    checks to see if all fields are inputed
+    pushes the form data to firebase DB
      */
     addLog: function() {
       if (
@@ -162,9 +157,9 @@ export default {
         alert("Please fill all fields.");
       }
     },
+    /* Reset form values */
     onReset(evt) {
       evt.preventDefault();
-      /* Reset form values */
       this.form = "";
       /* Trick to reset/clear native browser form validation state */
       this.show = false;
@@ -265,7 +260,7 @@ h6 {
 }
 .button-size {
   width: 100%;
-  padding: 15px 20px;
+  padding: 15px 20px !important;
   border-radius: 5px;
 }
 </style>
