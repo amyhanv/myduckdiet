@@ -1,9 +1,14 @@
 <template>
   <div id="log" class="container">
-    <header id="app-header" class="text-left">
+    <header id="app-header" class="text-center">
       <h1>
         <strong>Duck Diet</strong>
-      </h1>Log what you're feeding the ducks as part of a study made possible by DuckWelfareBC
+      </h1>
+
+      <p>
+        <i>What are you feeding the ducks?</i>
+      </p>
+      <img id="logo" src="../assets/ducklogo.png">
     </header>
 
     <b-form v-on:submit.stop.prevent="addLog" id="add-log">
@@ -14,20 +19,16 @@
         </h4>
 
         <!-- <input v-model="newFood" class="input-form" type="text"> -->
-        <b-form-group class="text-left">
-          <b-form-radio value="A" v-model="newFood" name="some-radios">Small fish</b-form-radio>
-          <b-form-radio value="B" v-model="newFood" name="some-radios">Seed and grain</b-form-radio>
-          <b-form-radio value="C" v-model="newFood" name="some-radios">Berries, fruits, nuts</b-form-radio>
-          <b-form-radio value="D" v-model="newFood" name="some-radios">Snails, worms, or slugs</b-form-radio>
-          <b-form-radio value="E" v-model="newFood" name="some-radios">Small crustaceans</b-form-radio>
-          <b-form-radio value="F" v-model="newFood" name="some-radios">Grass, leaves, and weeds</b-form-radio>
-          <b-form-radio value="G" v-model="newFood" name="some-radios">Algae and aquatic plants</b-form-radio>
-          <b-form-radio
-            value="B"
-            v-model="newFood"
-            name="some-radios"
-          >Frogs, tadpoles, salamanders, and other amphibians</b-form-radio>
-          <b-form-radio value="B" v-model="newFood" name="some-radios">Aquatic and land insects</b-form-radio>
+        <b-form-group id="radio-form">
+          <b-form-radio value="Small fish" v-model="newFood">Small fish</b-form-radio>
+          <b-form-radio value="Seed or grain" v-model="newFood">Seed or grain</b-form-radio>
+          <b-form-radio value="Fruits or nuts" v-model="newFood">Fruits or nuts</b-form-radio>
+          <b-form-radio value="Snails or worms" v-model="newFood">Snails or worms</b-form-radio>
+          <b-form-radio value="Plants" v-model="newFood">Plants</b-form-radio>
+          <b-form-radio value="Amphibians" v-model="newFood">Amphibians</b-form-radio>
+          <b-form-radio value="Insects" v-model="newFood">Insects</b-form-radio>
+
+          <b-form-radio value="Others" v-model="newFood">Others</b-form-radio>
         </b-form-group>
 
         <div class="mt-3">
@@ -56,7 +57,7 @@
           id="range-1"
           class="range-style"
           v-model="newFoodAmt"
-          min="0"
+          min="1"
           max="100"
           placeholder="Grams fed"
         />
@@ -101,7 +102,7 @@
           id="range-1"
           class="range-style"
           v-model="newNumDucks"
-          min="0"
+          min="1"
           max="100"
         />
         <h6 v-if="newNumDucks" class="mt-2">Value: {{ newNumDucks }} ducks</h6>
@@ -138,15 +139,28 @@ export default {
     };
   },
   methods: {
-    // on Submit -> addLog
+    /* addLog checks to see if all fields are inputed
+    and pushes the data to firebase DB
+     */
     addLog: function() {
-      fb.foodRef.push(this.newFood);
-      fb.foodAmountRef.push(this.newFoodAmt);
-      fb.foodKindRef.push(this.newFoodKind);
-      fb.numDucksRef.push(this.newNumDucks);
-      fb.timeFedRef.push(this.newTimeFed);
-      fb.whereFedRef.push(this.newWhereFed);
-      alert("Thanks for logging what the ducks ate.");
+      if (
+        this.newFood &&
+        this.newFoodAmt &&
+        this.newFoodKind &&
+        this.newNumDucks &&
+        this.newTimeFed &&
+        this.newWhereFed != ""
+      ) {
+        fb.foodRef.push(this.newFood);
+        fb.foodAmountRef.push(this.newFoodAmt);
+        fb.foodKindRef.push(this.newFoodKind);
+        fb.numDucksRef.push(this.newNumDucks);
+        fb.timeFedRef.push(this.newTimeFed);
+        fb.whereFedRef.push(this.newWhereFed);
+        alert("Thanks for logging.");
+      } else {
+        alert("Please fill all fields.");
+      }
     },
     onReset(evt) {
       evt.preventDefault();
@@ -165,8 +179,7 @@ export default {
 <style>
 @import url("https://fonts.googleapis.com/css?family=Roboto+Mono");
 #app {
-  /* font-family: "Avenir", Helvetica, Arial, sans-serif; */
-  font-family: "Roboto Mono";
+  font-family: "Roboto Mono", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -193,10 +206,18 @@ export default {
 }
 h1,
 h2,
-h3,
-h4,
-h5 {
+h6 {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
+}
+
+#logo {
+  margin: 0 auto;
+  width: 150px;
+  padding: 0;
+  display: block;
+}
+#add-log {
+  margin-top: 50px;
 }
 .range-style {
   width: 300px;
@@ -207,13 +228,16 @@ h5 {
   margin: 30px 0;
   padding: 50px;
   border-radius: 5px;
-  /* background-color: #f5f5f5; */
   box-shadow: 2px 5px 20px rgba(0, 0, 0, 0.03);
+}
+
+#radio-form {
+  text-align: left;
+  margin: 0 auto;
 }
 
 .input-form,
 .vdatetime-input {
-  /* border: 0; */
   outline: 0;
   background: #e6e6e6;
   border: none;
@@ -223,7 +247,6 @@ h5 {
   padding: 10px;
   color: #6d777e;
   width: 300px;
-  /* box-shadow: 2px 5px 20px rgba(0, 0, 0, 0.03); */
 }
 
 #form-buttons {
@@ -232,9 +255,8 @@ h5 {
 }
 #submit-log {
   background-color: white;
-  color: #045cb9;
-  border: none;
-  box-shadow: 8px 6px 51px rgba(0, 123, 254, 0.18);
+  color: #007bfe;
+  border: 1px solid #007bfe;
 }
 #reset-log {
   border: 1px solid #9fb8ca;

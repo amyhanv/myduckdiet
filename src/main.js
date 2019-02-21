@@ -13,11 +13,13 @@ import "vue-datetime/dist/vue-datetime.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 
-Vue.use(Vuelidate);
+import VueChart from "vue-chartjs";
+
 Vue.use(VueFire);
 Vue.use(VueRouter);
 Vue.use(Datetime);
 Vue.use(BootstrapVue);
+Vue.use(VueChart);
 
 Vue.config.productionTip = false;
 
@@ -58,7 +60,6 @@ new Vue({
       <router-view/>
     </div>
   `
-  // template: "<App>"
 }).$mount("#app");
 
 /* 
