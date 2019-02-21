@@ -17,9 +17,7 @@ Vue.use(VueFire);
 Vue.use(VueRouter);
 Vue.use(Datetime);
 Vue.use(BootstrapVue);
-Vue.use(VueChart);
 
-require("dotenv").config();
 Vue.config.productionTip = false;
 
 const router = new VueRouter({
