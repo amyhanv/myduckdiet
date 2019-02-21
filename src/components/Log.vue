@@ -220,7 +220,7 @@ h6 {
   margin-top: 50px;
 }
 .range-style {
-  width: 300px;
+  width: 300px !important;
   padding-top: 3em;
 }
 
