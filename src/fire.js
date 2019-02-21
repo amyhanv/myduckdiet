@@ -1,11 +1,13 @@
 import Firebase from "firebase";
+require("dotenv").config();
 
 var config = {
   apiKey: process.env.VUE_APP_FIREBASE_API_KEY,
-  authDomain: "myduckdiet.firebaseapp.com",
-  databaseURL: "https://myduckdiet.firebaseio.com",
-  projectId: "myduckdiet",
-  storageBucket: "myduckdiet.appspot.com",
+  authDomain: process.env.VUE_APP_FIREBASE_PROJECT_ID + ".firebaseapp.com",
+  databaseURL:
+    "https://" + process.env.VUE_APP_FIREBASE_PROJECT_ID + ".firebaseio.com",
+  projectId: process.env.VUE_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.VUE_APP_FIREBASE_PROJECT_ID + ".appspot.com",
   messagingSenderId: "7148421548"
 };
 

@@ -13,14 +13,13 @@ import "vue-datetime/dist/vue-datetime.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 
-import VueChart from "vue-chartjs";
-
 Vue.use(VueFire);
 Vue.use(VueRouter);
 Vue.use(Datetime);
 Vue.use(BootstrapVue);
 Vue.use(VueChart);
 
+require("dotenv").config();
 Vue.config.productionTip = false;
 
 const router = new VueRouter({
