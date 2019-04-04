@@ -9,17 +9,7 @@ This is a VueJS web app. Users can log what they've fed ducks!
 ![Pic1](./public/result.png)
 ![Pic2](./public/log.png)
 
-##### Scenario:
 
-A scientist is trying to understand how ducks are being fed in parks around the world. She wants
-to collect the following information:
-
-- What time the ducks are fed
-- What food the ducks are fed
-- Where the ducks are fed
-- How many ducks are fed
-- What kind of food the ducks are fed
-- How much food the ducks are fed
 
 ## What was used?
 
